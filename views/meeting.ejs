@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome <%= username %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+       
+<li><a href="/logout">Logout!</a></li>
+<h1> meetings</h1>
+<br>
+
+<br>
+<form method="POST" >
+    <input type="text" name="meeting_name" placeholder="meeting name">
+    <button type="submit" formaction="/meetings"> create meeting </button>
+    <input type="text" name="meeting_id" placeholder="meeting id">
+    <button type="submit" formaction="/join"> join meeting </button>
+</form>
+<br>
+<table class="table">
+    <tr>
+        <td scope="col">#</td>
+        <td scope="col">meeting name</td>
+        <td scope="col">meeting id</td>
+        <td scope="col">meeting date</td>
+        <td scope="col">meeting creator</td>
+    </tr>
+<% for(var i=0;i<meeting.length;++i){ %>
+    <tr>
+        <th scope="row"><%= i+1 %></th>
+      
+        <td><%= meeting[i].name %></td>
+        <td><%= meeting[i]._id %></td>
+        <td><%= meeting[i].date %></td>
+        <td><%= meeting[i].creator %></td>
+    </tr>
+<% } %>
+</table>
+
+</body>
+
+</html>
+
+
+
