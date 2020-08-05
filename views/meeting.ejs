@@ -1,47 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>welcome <%= username %></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+<html>
 <body>
-       
-<li><a href="/logout">Logout!</a></li>
-<h1> meetings</h1>
-<br>
+<head>
 
+<title> Speech to Text </title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+.input-group{ width: 40%;
+                          margin-left: auto;
+                          margin-right: auto;}
+.table {               margin-left: auto;
+                          margin-right: auto;
+                           width: 60%; }
+.page-footer {  
+                          width: 100%;
+                          height: 65px;
+                         background: #9fc4fc;
+                        border-top: solid 10px #eee; }
+</style>
+</head>
+
+<!--header-->
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+ <img src="logo.png" width="70" height="70" class="d-inline-block align-top" alt="" loading="lazy">
+  <button type="button" class="btn btn-outline-primary">Logout</button>
+</nav>
+
+<!--main body-->
+
+<h1 class="text-center display-3"><strong>Meetings</strong></h1>
+<br><br>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Meeting Name" aria-label="Meeting Name" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button" id="button-addon2">Create Meeting</button>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Meeting Link" aria-label="Meeting Link" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button" id="button-addon2">Join Meeting  </button>
+  </div>
+</div>
+<br><br><br>
+<h2 class="text-center display-6"> Previous Meetings </h2>
 <br>
-<form method="POST" >
-    <input type="text" name="meeting_name" placeholder="meeting name">
-    <button type="submit" formaction="/meetings"> create meeting </button>
-    <input type="text" name="meeting_id" placeholder="meeting id">
-    <button type="submit" formaction="/join"> join meeting </button>
-</form>
-<br>
-<table class="table">
+ <!--table for previous records-->
+<table class="table table-hover" >
+  <thead bgcolor="#e8f4fc">
     <tr>
-        <td scope="col">#</td>
-        <td scope="col">meeting name</td>
-        <td scope="col">meeting id</td>
-        <td scope="col">meeting date</td>
-        <td scope="col">meeting creator</td>
+      <th scope="col">S.No.</th>
+      <th scope="col">Meeting Name</th>
+      <th scope="col">Meeting ID</th>
+     <th scope="col">Meeting Date</th>
+      <th scope="col">Meeting Organiser</th>
     </tr>
-<% for(var i=0;i<meeting.length;++i){ %>
-    <tr>
-        <th scope="row"><%= i+1 %></th>
-      
-        <td><%= meeting[i].name %></td>
-        <td><%= meeting[i]._id %></td>
-        <td><%= meeting[i].date %></td>
-        <td><%= meeting[i].creator %></td>
+  </thead>
+  <tbody>
+  <tr>
+      <td>01.</td>
+      <td>Name</td>
+      <td>ID</td>
+      <td>Date</td>
+     <td>Creator</td>
     </tr>
-<% } %>
+<tr>
+      <td>02.</td>
+      <td>Name</td>
+      <td>ID</td>
+      <td>Date</td>
+     <td>Creator</td>
+    </tr>
+<tr>
+      <td>03.</td>
+      <td>Name</td>
+      <td>ID</td>
+      <td>Date</td>
+     <td>Creator</td>
+    </tr>
+ </tbody>
 </table>
+                    <!-- footer-->
+<footer class="page-footer font-small blue">
+  <div class="footer-copyright text-center py-3"> &#169 Speech To Text 2020
+ </div>                                                                                                                   
 
-</body>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+</body> 
 </html>
 
 
