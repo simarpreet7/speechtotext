@@ -58,6 +58,38 @@
       <th scope="col">Meeting ID</th>
      <th scope="col">Meeting Date</th>
       <th scope="col">Meeting Organiser</th>
+=======
+<body>
+       
+	<h1> </h1>
+<h1 style="text-align: center">Meetings</h1>
+<div class="container">
+    <div class="row">
+        <div style="width: 30%; margin: 30px auto;">
+            <form  method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="meeting_name" placeholder="Meeting Name">
+                </div>
+				 <div class="form-group">
+                    <input class="form-control" type="text" name="meeting_id" placeholder="Meeting Id">
+                </div>
+                <div class="form-group">
+                    <button formaction="/join" class="btn btn-lg btn-primary btn-block">Join Meeting</button>
+                </div>
+				<button formaction="/meetings" class="btn btn-lg btn-primary btn-block">Create Meeting</button>
+            </form>
+            <a href="/logout">Logout!</a>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <td scope="col">#</td>
+        <td scope="col">Meeting Name</td>
+        <td scope="col">Meeting Id</td>
+        <td scope="col">Meeting Date</td>
+        <td scope="col">Meeting Creator</td>
+
     </tr>
   </thead>
   <tbody>
@@ -96,6 +128,9 @@
 
 </body> 
 </html>
+
+
+
 
 
 
