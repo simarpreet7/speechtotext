@@ -14,8 +14,8 @@ var app = express();
 const server=http.createServer(app); 
 const io=socketio(server);
 var port=process.env.PORT||3000;
-//
-mongoose.connect("mongodb+srv://sam:samsingh@cluster0-znal8.mongodb.net/meet?retryWrites=true&w=majority", {
+//mongodb+srv://sam:samsingh@cluster0-znal8.mongodb.net/meet?retryWrites=true&w=majority
+mongoose.connect("mongodb://localhost/speechdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
