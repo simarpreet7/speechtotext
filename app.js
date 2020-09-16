@@ -13,6 +13,17 @@ var express                 = require("express"),
 var app = express();
 const server=http.createServer(app); 
 const io=socketio(server);
+
+//peerjs include
+const { ExpressPeerServer } = require('peer');
+const peerServer = ExpressPeerServer(server, {
+  debug: true
+});
+//;
+//peerjs used 
+app.use('/peerjs', peerServer);
+//;
+
 var port=process.env.PORT||3000;
 //mongodb+srv://sam:samsingh@cluster0-znal8.mongodb.net/meet?retryWrites=true&w=majority
 mongoose.connect("mongodb://localhost/speechdb", {
@@ -44,30 +55,84 @@ app.use("/public", express.static("public"));
 
 
  //socket
- var users={};
- var susers={};
+//  var users={};
+//  var susers={};
  
-  io.on('connection', function (socket) {
+//   io.on('connection', function (socket) {
   
    
-     users[ socket.handshake.query.loggeduser] =socket.id
+//      users[ socket.handshake.query.loggeduser] =socket.id
+//      susers[socket.id ] =socket.handshake.query.loggeduser
+//      console.log(users);
+//      console.log(socket.handshake.query.meeting_id)
+//       socket.join(socket.handshake.query.meeting_id);
+//     //   socket.on('disconnecting', () => {
+//     //    // const rooms = Object.keys(socket.rooms);
+//     //     // the rooms array contains at least the socket ID
+//     //     var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
+//     //     console.log(room);
+//     //        io.to(socket.handshake.query.meeting_id).emit('someone_left',{room_data:room,decode:susers});
+ 
+
+//     //   })
+//     var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
+//     console.log(room);
+//  //    var x=[];
+//  //    for(var i=0;i<room.length;++i){x.push(susers[room.sockets[i]])}       
+//        io.to(socket.handshake.query.meeting_id).emit('someone_joined',{room_data:room,decode:susers});
+//       socket.on('disconnect', () => {    
+           
+//         delete users[socket.handshake.query.loggeduser];
+//         delete   susers[socket.id ];
+//         console.log(users);
+//         delete socket; 
+//         var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
+//         console.log(room);
+//            io.to(socket.handshake.query.meeting_id).emit('someone_left',{room_data:room,decode:susers}); 
+//        });
+      
+//     socket.on("speaking",function(data){
+//         io.in(socket.handshake.query.meeting_id).emit('other_listen', {
+//            msg:data.msg,
+//            current_speaker:data.current_speaker
+//         })
+//     })
+
+    
+  
+    
+//  })
+
+ var users={};
+ var susers={};
+ //@issue same values of socketio for zoom and speak
+io.on('connection', socket => {
+    //zoom code
+    socket.on('join-room', (roomId, userId) => {
+      socket.join(roomId)
+      socket.to(roomId).broadcast.emit('user-connected', userId);
+      // messages
+      socket.on('message', (data) => {
+        //send message to the same room
+        io.to(roomId).emit('createMessage', data)
+    }); 
+  
+      socket.on('disconnect', () => {
+        socket.to(roomId).broadcast.emit('user-disconnected', userId)
+      })
+    })
+
+
+    //speak code
+         users[ socket.handshake.query.loggeduser] =socket.id
      susers[socket.id ] =socket.handshake.query.loggeduser
      console.log(users);
      console.log(socket.handshake.query.meeting_id)
       socket.join(socket.handshake.query.meeting_id);
-    //   socket.on('disconnecting', () => {
-    //    // const rooms = Object.keys(socket.rooms);
-    //     // the rooms array contains at least the socket ID
-    //     var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
-    //     console.log(room);
-    //        io.to(socket.handshake.query.meeting_id).emit('someone_left',{room_data:room,decode:susers});
- 
-
-    //   })
+   
     var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
     console.log(room);
- //    var x=[];
- //    for(var i=0;i<room.length;++i){x.push(susers[room.sockets[i]])}       
+     
        io.to(socket.handshake.query.meeting_id).emit('someone_joined',{room_data:room,decode:susers});
       socket.on('disconnect', () => {    
            
@@ -78,6 +143,7 @@ app.use("/public", express.static("public"));
         var room = io.sockets.adapter.rooms[socket.handshake.query.meeting_id];
         console.log(room);
            io.to(socket.handshake.query.meeting_id).emit('someone_left',{room_data:room,decode:susers}); 
+           
        });
       
     socket.on("speaking",function(data){
@@ -87,10 +153,9 @@ app.use("/public", express.static("public"));
         })
     })
 
-    
-  
-    
- })
+
+
+  })
 
 
 
@@ -144,7 +209,7 @@ app.post("/join",isLoggedIn, function(req, res){
  });
 
  app.get("/conversation/:id",isLoggedIn,function(req,res){
-   res.render("conversation",{username:req.user.username});
+   res.render("conversation",{username:req.user.username,roomId: req.params.id});
  });
 // Auth Routes
 
