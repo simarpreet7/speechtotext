@@ -104,6 +104,7 @@
        
             
             </div>
+            
 
           </div>
           <div class="main__controls">
@@ -116,6 +117,17 @@
                    <i class="fas fa-video"></i>
                    <span>Stop Video</span>
                 </div>
+              
+                <div class="main__controls__button" id="start-record-btn" title="Start Recording">
+                  <i class="fas fa-edit"></i>
+                 
+                  <span>write</span>
+               </div>
+               <div class="main__controls__button" id="pause-record-btn" title="Pause Recording">
+                  <i class="fas fa-circle"></i>
+                 
+                  <span>stop write</span>
+               </div>
              </div>
              <div class="main__controls__block">
                 <div class="main__controls__button">
@@ -144,6 +156,9 @@
             <div id="dtext">
            
             </div> 
+            <script>
+               console.log(document.getElementById("dtext").innerText)
+            </script>
             <br>
              <h6>Chat</h6>
           </div>
@@ -166,8 +181,8 @@
     <br>
     <br>
   
-<h1>Voice Controlled</h1>
-<p class="page-description">A tiny app that allows you to take notes by recording your voice</p>
+<h1>document for id <%=roomId%></h1>
+<p class="page-description">A tiny app that allows you to take notes by recording your voice over zoom</p>
 
 
 <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
@@ -177,8 +192,8 @@
     <div class="input-single">
         <textarea contenteditable="false" id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
     </div>         
-    <button id="start-record-btn" title="Start Recording">Start Recognition</button>
-    <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
+    <!-- <button id="start-record-btn" title="Start Recording">Start Recognition</button> -->
+    <!-- <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button> -->
     <button id="save-note-btn" title="Save Note">Save Note</button>   
     <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
     
