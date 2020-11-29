@@ -28,6 +28,18 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to test as appropriate before pull request.
 
+## before testing live
+type url chrome://flags/#unsafely-treat-insecure-origin-as-secure
+Enter https://dtumeet.herokuapp.com/ in the textarea
+click enabled and relaunch chrome 
+
+## live
+live on : https://dtumeet.herokuapp.com/
+
+
+
+
+
 ## License
 he MIT License (MIT)
 
