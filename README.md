@@ -18,6 +18,9 @@ node app.js
 to be written by author soon
 
 ## Demo
+full project (dev):
+https://drive.google.com/file/d/1NGJzG5qVbxm5lGOBRW1HlSks3A7bPuXz/view?usp=sharing
+speech to text (master):
 https://drive.google.com/file/d/174kDzDb_bjgp3p6B8PHcgffvlFAbPsN5/view?usp=drivesdk
 
 ## Contributing
