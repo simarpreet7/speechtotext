@@ -26,7 +26,7 @@ app.use('/peerjs', peerServer);
 
 var port=process.env.PORT||3000;
 //mongodb+srv://sam:samsingh@cluster0-znal8.mongodb.net/meet?retryWrites=true&w=majority
-mongoose.connect("mongodb://localhost/speechdb", {
+mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost/speechdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
