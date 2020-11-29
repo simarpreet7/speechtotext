@@ -37,12 +37,12 @@ socket.on("other_listen",function(data){
 //zoom code start
 
 const videoGrid = document.getElementById('video-grid')
-//normal // const myPeer = new Peer();
-const myPeer = new Peer('samsingh', {
-  secure: true, 
-  host: 'dtumeet.herokuapp.com', 
-  port: 443,
-});
+ const myPeer = new Peer();
+// const myPeer = new Peer('samsingh', {
+//   secure: true, 
+//   host: 'dtumeet.herokuapp.com', 
+//   port: 443,
+// });
 //   undefined, {
 //   path: '/peerjs',
 //   host: '/',
