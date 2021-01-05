@@ -37,7 +37,8 @@ socket.on("other_listen",function(data){
 //zoom code start
 
 const videoGrid = document.getElementById('video-grid')
- const myPeer = new Peer();
+ //const myPeer = new Peer(); for lan
+const myPeer = new Peer({key:'peerjs' , host:'dtumeet-server.herokuapp.com' ,secure:true,port:443}) //for internet
 // const myPeer = new Peer('samsingh', {
 //   secure: true, 
 //   host: 'dtumeet.herokuapp.com', 
